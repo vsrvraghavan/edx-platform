@@ -64,7 +64,11 @@ class VerticalBlock(SequenceFields, XModuleFields, StudioEditableBlock, XmlParse
                     usage_key=self.location),  # pylint: disable=no-member
             if 'username' not in child_context:
                 user_service = self.runtime.service(self, 'user')
-                child_context['username'] = user_service.get_current_user().opt_attrs['edx-platform.username']
+                xblock_user = user_service.get_current_user()
+                if 'edx-platform.username' in xblock_user.opt_attrs:
+                    child_context['username'] = xblock_user.opt_attrs['edx-platform.username']
+                else:
+                    view = PUBLIC_VIEW
 
         child_blocks = self.get_display_items()
 
