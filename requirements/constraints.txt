@@ -131,3 +131,7 @@ vulture<2.0
 
 # sympy latest version causing test failures.
 sympy==1.6.2
+
+
+# upgrading step by step towards latest version to avoid major issue/warnings.
+djangorestframework==3.10.0
