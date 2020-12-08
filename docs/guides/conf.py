@@ -282,7 +282,7 @@ def on_init(app):  # pylint: disable=unused-argument
         apidoc_path = os.path.join(bin_path, apidoc_path)
     exclude_dirs = ['envs', 'migrations', 'test', 'tests']
     exclude_dirs.extend(cms_djangoapps)
-    exclude_dirs.extend(lms_djangoapps)
+
     exclude_files = ['admin.py', 'test.py', 'testing.py', 'tests.py', 'testutils.py', 'wsgi.py']
     for module in modules:
         module_path = six.text_type(root / module)
