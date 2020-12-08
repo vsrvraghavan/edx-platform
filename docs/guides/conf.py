@@ -315,5 +315,5 @@ def on_init(app):  # pylint: disable=unused-argument
 
 def setup(app):
     """Sphinx extension: run sphinx-apidoc."""
-    event = b'builder-inited' if six.PY2 else 'builder-inited'
+    event = 'builder-inited'
     app.connect(event, on_init)
