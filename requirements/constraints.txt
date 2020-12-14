@@ -101,14 +101,8 @@ pip-tools<5.0.0
 # Upgrading to 2.5.3 on 2020-01-03 triggered "'tzlocal' object has no attribute '_std_offset'" errors in production
 python-dateutil==2.4.0
 
-# stevedore 2.0.0 requires python >= 3.6
-stevedore<2.0.0
-
 # Constraint from astroid 2.3.3
 wrapt==1.11.*
-
-# zipp 2.0.0 requires Python >= 3.6
-zipp==1.0.0
 
 # tests failing for pymongo==3.11
 pymongo<3.11
