@@ -85,10 +85,7 @@ class Command(BaseCommand):
         if not confirm_changes(options, orgs, org_courseid_pairs):
             print("No changes applied.")
             return
-        print("Applying changes...")
-        organizations_api.bulk_add_organizations(orgs, dry_run=False)
-        organizations_api.bulk_add_organization_courses(org_courseid_pairs, dry_run=False)
-        print("Changes applied successfully.")
+        bulk_add_data(orgs, org_courseid_pairs, dry_run=False)
 
 
 def confirm_changes(options, orgs, org_courseid_pairs):
@@ -111,14 +108,59 @@ def confirm_changes(options, orgs, org_courseid_pairs):
         raise CommandError("Only one of 'apply' and 'dry' may be specified")
     if options.get('apply'):
         return True
-    organizations_api.bulk_add_organizations(orgs, dry_run=True)
-    organizations_api.bulk_add_organization_courses(org_courseid_pairs, dry_run=True)
+    bulk_add_data(orgs, org_courseid_pairs, dry_run=True)
     if options.get('dry'):
         return False
     answer = ""
     while answer.lower() not in {'y', 'yes', 'n', 'no'}:
         answer = input('Commit changes shown above to the database [y/n]? ')
     return answer.lower().startswith('y')
+
+
+def bulk_add_data(orgs, org_courseid_pairs, dry_run):
+    """
+    Bulk-add the organizations and organization-course linkages.
+
+    Print out list of organizations and organization-course linkages,
+    one per line. We distinguish between records that are added by
+    being created vs. those that are being added by just reactivating an
+    existing record.
+
+    Arguments:
+        options (dict[str]): command-line arguments.
+        orgs (list[dict]): list of org data dictionaries to bulk-add.
+        org_courseid_pairs (list[tuple[dict, str]]):
+            list of (org data dictionary, course key string) links to bulk-add.
+        dry_run: Whether or not this run should be "dry" (ie, don't apply changes).
+    """
+    adding_phrase = "Dry-run of bulk-adding" if dry_run else "Bulk-adding"
+    created_phrase = "Would have created" if dry_run else "Created"
+    reactivated_phrase = "Would have reactivated" if dry_run else "Reactivated"
+
+    print("------------------------------------------------------")
+    print(f"{adding_phrase} organizations...")
+    orgs_created, orgs_reactivated = organizations_api.bulk_add_organizations(
+        orgs, dry_run=dry_run
+    )
+    print(f"{created_phrase} {len(orgs_created)} organizations:")
+    for org_short_name in sorted(orgs_created):
+        print(f"    {org_short_name}")
+    print(f"{reactivated_phrase} {len(orgs_reactivated)} organizations:")
+    for org_short_name in sorted(orgs_reactivated):
+        print(f"    {org_short_name}")
+
+    print("------------------------------------------------------")
+    print(f"{adding_phrase} organization-course linkages...")
+    linkages_created, linkages_reactivated = organizations_api.bulk_add_organization_courses(
+        org_courseid_pairs, dry_run=dry_run
+    )
+    print(f"{created_phrase} {len(linkages_created)} organization-course linkages:")
+    for org_short_name, course_id in sorted(linkages_created):
+        print(f"    {org_short_name},{course_id}")
+    print(f"{reactivated_phrase} {len(linkages_reactivated)} organization-course linkages:")
+    for org_short_name, course_id in sorted(linkages_reactivated):
+        print(f"    {org_short_name},{course_id}")
+    print("------------------------------------------------------")
 
 
 def find_orgslug_courseid_pairs():
