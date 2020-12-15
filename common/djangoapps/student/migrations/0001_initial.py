@@ -230,6 +230,7 @@ class Migration(migrations.Migration):
                 ('bio', models.CharField(max_length=3000, null=True, blank=True)),
                 ('profile_image_uploaded_at', models.DateTimeField(null=True)),
                 ('user', models.OneToOneField(related_name='profile', to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
+                ('completed_registration_assesment', models.BooleanField(default=0)),
             ],
             options={
                 'db_table': 'auth_userprofile',
