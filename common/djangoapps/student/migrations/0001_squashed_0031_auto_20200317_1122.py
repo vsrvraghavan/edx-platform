@@ -242,6 +242,7 @@ class Migration(migrations.Migration):
                 ('bio', models.CharField(blank=True, max_length=3000, null=True)),
                 ('profile_image_uploaded_at', models.DateTimeField(blank=True, null=True)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='profile', to=settings.AUTH_USER_MODEL)),
+                ('completed_registration_assesment', models.BooleanField(default=0)),
             ],
             options={
                 'db_table': 'auth_userprofile',
