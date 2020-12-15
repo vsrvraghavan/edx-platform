@@ -67,9 +67,6 @@ importlib-metadata==1.7.0
 # jsonfield2 3.1.0 drops support for python 3.5
 jsonfield2<3.1.0
 
-# kiwisolver 1.2.0 requires Python 3.6+
-kiwisolver<1.2.0
-
 # 4.5.1 introduced a bug when used together with xmlsec: https://bugs.launchpad.net/lxml/+bug/1880251
 # Tests passed, but hit a problem in stage
 lxml<4.5.1
