@@ -561,6 +561,7 @@ class UserProfile(models.Model):
     goals = models.TextField(blank=True, null=True)
     allow_certificate = models.BooleanField(default=1)
     bio = models.CharField(blank=True, null=True, max_length=3000, db_index=False)
+    completed_registration_assesment =  models.BooleanField(default=0)
     profile_image_uploaded_at = models.DateTimeField(null=True, blank=True)
     phone_regex = RegexValidator(regex=r'^\+?1?\d*$', message="Phone number can only contain numbers.")
     phone_number = models.CharField(validators=[phone_regex], blank=True, null=True, max_length=50)
@@ -572,6 +573,15 @@ class UserProfile(models.Model):
         this user has uploaded a profile image.
         """
         return self.profile_image_uploaded_at is not None
+
+    @property
+    def has_taken_registration_test(self):
+        """
+        Convenience method that returns a boolean indicating whether or not
+        this user has taken registration test.
+        """
+        return self.completed_registration_assesment is not None
+
 
     @property
     def age(self):

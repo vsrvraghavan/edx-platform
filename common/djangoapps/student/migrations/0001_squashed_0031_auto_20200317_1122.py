@@ -239,6 +239,7 @@ class Migration(migrations.Migration):
                 ('country', django_countries.fields.CountryField(blank=True, max_length=2, null=True)),
                 ('goals', models.TextField(blank=True, null=True)),
                 ('allow_certificate', models.BooleanField(default=1)),
+                ('completed_registration_assesment', models.BooleanField(default=0)),
                 ('bio', models.CharField(blank=True, max_length=3000, null=True)),
                 ('profile_image_uploaded_at', models.DateTimeField(blank=True, null=True)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='profile', to=settings.AUTH_USER_MODEL)),

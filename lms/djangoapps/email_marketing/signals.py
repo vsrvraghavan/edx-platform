@@ -37,7 +37,7 @@ log = logging.getLogger(__name__)
 # list of changed fields to pass to Sailthru
 CHANGED_FIELDNAMES = ['username', 'is_active', 'name', 'gender', 'education',
                       'age', 'level_of_education', 'year_of_birth',
-                      'country', LANGUAGE_KEY]
+                      'country', LANGUAGE_KEY,'completed_registration_assesment']
 
 WAFFLE_NAMESPACE = 'sailthru'
 WAFFLE_SWITCHES = LegacyWaffleSwitchNamespace(name=WAFFLE_NAMESPACE)
@@ -236,7 +236,7 @@ def _create_sailthru_user_vars(user, profile, registration=None):
         sailthru_vars['fullname'] = profile.name
         sailthru_vars['gender'] = profile.gender
         sailthru_vars['education'] = profile.level_of_education
-
+        sailthru_vars['completed_registration_assesment'] = profile.completed_registration_assesment
         if profile.year_of_birth:
             sailthru_vars['year_of_birth'] = profile.year_of_birth
         sailthru_vars['country'] = text_type(profile.country.code)

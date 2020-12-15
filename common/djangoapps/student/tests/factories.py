@@ -60,6 +60,7 @@ class UserProfileFactory(DjangoModelFactory):
     gender = u'm'
     mailing_address = None
     goals = u'Learn a lot'
+    completed_registration_assesment = False
     allow_certificate = True
 
 
