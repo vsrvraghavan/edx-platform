@@ -182,7 +182,7 @@ class UserReadOnlySerializer(serializers.Serializer):
                         user_profile.social_links.all().order_by('platform'), many=True
                     ).data,
                     "extended_profile": get_extended_profile(user_profile),
-                    "completed_registration_assesment": None,
+                    "completed_registration_assesment": user_profile.completed_registration_assesment,
                     "phone_number": user_profile.phone_number,
                 }
             )
