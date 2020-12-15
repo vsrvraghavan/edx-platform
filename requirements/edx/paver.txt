@@ -12,7 +12,7 @@ lazy==1.4                 # via -r requirements/edx/paver.in
 libsass==0.10.0           # via -r requirements/edx/paver.in
 markupsafe==1.1.1         # via -r requirements/edx/paver.in
 mock==3.0.5               # via -c requirements/edx/../constraints.txt, -r requirements/edx/paver.in
-path==13.1.0              # via -c requirements/edx/../constraints.txt, -r requirements/edx/paver.in
+path==15.0.1              # via -r requirements/edx/paver.in
 paver==1.3.4              # via -r requirements/edx/paver.in
 pbr==5.5.1                # via stevedore
 psutil==5.7.3             # via -r requirements/edx/paver.in
