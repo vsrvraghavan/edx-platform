@@ -17,6 +17,7 @@ from lms.djangoapps.branding import api as branding_api
 from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_enabled, released_languages
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
+from common.djangoapps.student.models import UserProfile
 %>
 
 ## Provide a hook for themes to inject branding on top.
@@ -59,6 +60,11 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
             <span class="line"></span>
         </div>
         % if user.is_authenticated:
+            % if not user.profile.completed_registration_assesment and request.path != "/registrationassessment":
+                <script>
+                    window.location.href = "/registrationassessment";
+                </script>
+            % endif
             <%include file="navbar-authenticated.html" args="online_help_token=online_help_token"/>
         % else:
             <%include file="navbar-not-authenticated.html" args="online_help_token=online_help_token"/>

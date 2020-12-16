@@ -580,7 +580,7 @@ class UserProfile(models.Model):
         Convenience method that returns a boolean indicating whether or not
         this user has taken registration test.
         """
-        return self.completed_registration_assesment is not None
+        return self.completed_registration_assesment
 
 
     @property
