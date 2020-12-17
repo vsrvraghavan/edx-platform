@@ -21,6 +21,14 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 from common.djangoapps.util.cache import cache_if_anonymous
 from common.djangoapps.util.views import fix_crum_request
 
+from django.shortcuts import render
+from django.template import loader
+from django.http import HttpResponse
+from django.conf import settings
+
+from django.contrib.auth.decorators import login_required
+
+
 valid_templates = []
 
 if settings.STATIC_GRAB:
@@ -37,7 +45,7 @@ def index(request, template):
     else:
         return redirect('/')
 
-
+@login_required
 def readcookie(request):
     template = loader.get_template('readcookies.html') # getting our template  
     name = {
