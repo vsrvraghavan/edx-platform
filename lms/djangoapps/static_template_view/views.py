@@ -38,6 +38,22 @@ def index(request, template):
         return redirect('/')
 
 
+def readcookie(request):
+    template = loader.get_template('readcookies.html') # getting our template  
+    name = {
+        'student': request.headers['Cookie']#request.COOKIES.get(settings.SESSION_COOKIE_NAME) 
+    }
+    return HttpResponse(template.render(name))       # rendering the template in HttpResponse 
+
+def has_http_only(cookie):
+    extra_args = cookie.__dict__.get('_rest')
+    if extra_args:
+        for key in extra_args.keys():
+            if key.lower() == 'httponly':
+                return True
+
+    return False    
+    
 @ensure_csrf_cookie
 @cache_if_anonymous()
 def render(request, template):
