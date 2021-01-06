@@ -22,5 +22,6 @@ class Migration(migrations.Migration):
             ],
             options={
                 'db_table': 'auth_userprofile_extrainfo',
+            }
         ),
     ]
