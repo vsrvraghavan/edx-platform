@@ -62,7 +62,7 @@ from common.djangoapps.student.models import UserProfile
         % if user.is_authenticated:
             % if not user.profile.completed_registration_assesment and request.path != "/registrationassessment":
                 <script>
-                    window.location.href = "/registrationassessment";
+                    window.location.href = "/assessment_callback";
                 </script>
             % endif
             <%include file="navbar-authenticated.html" args="online_help_token=online_help_token"/>
