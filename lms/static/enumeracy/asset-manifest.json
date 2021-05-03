@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bcafe8db.chunk.css",
+    "main.js": "/static/js/main.e9458796.chunk.js",
+    "main.js.map": "/static/js/main.e9458796.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.96b76cd5.js",
+    "runtime~main.js.map": "/static/js/runtime~main.96b76cd5.js.map",
+    "static/js/2.f028ba7f.chunk.js": "/static/js/2.f028ba7f.chunk.js",
+    "static/js/2.f028ba7f.chunk.js.map": "/static/js/2.f028ba7f.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.c857b8ae4892610d93360142c4b566f5.js": "/precache-manifest.c857b8ae4892610d93360142c4b566f5.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.bcafe8db.chunk.css.map": "/static/css/main.bcafe8db.chunk.css.map",
+    "static/media/fonts.css": "/static/media/Muli.df733025.ttf",
+    "static/media/style.css": "/static/media/traingle-pencil.c0c6fa0d.png",
+    "static/media/style1.css": "/static/media/chat-screen-background.1889dfc1.png",
+    "static/media/coin-counts@2x.png": "/static/media/coin-counts@2x.8fd53c3f.png",
+    "static/media/congratulation-completion-natural-numbers@2x.png": "/static/media/congratulation-completion-natural-numbers@2x.2d3121a4.png",
+    "static/media/congratulations-quiz-completion@2x.png": "/static/media/congratulations-quiz-completion@2x.9372c3e7.png",
+    "static/media/good-effort-graphic@2x.png": "/static/media/good-effort-graphic@2x.6f5938d5.png",
+    "static/media/steve.png": "/static/media/steve.82ff33ba.png",
+    "static/media/uncle-steve-porfile.png": "/static/media/uncle-steve-porfile.2b179974.png",
+    "static/media/well-done-graphic@2x.png": "/static/media/well-done-graphic@2x.1dd1a9a9.png"
+  }
+}
