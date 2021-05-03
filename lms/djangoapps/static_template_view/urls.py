@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^media-kit$', views.render, {'template': 'media-kit.html'}, name="media-kit"),
     url(r'^copyright$', views.render, {'template': 'copyright.html'}, name="copyright"),
     url(r'^registrationassessment$', views.render, {'template': 'registrationassessment.html'}, name="registrationassessment"),
+    url(r'^assessment_callback', views.render, {'template': 'assessment_callback.html'}, name="assessment_callback"),
     url(r'^readcookies$', views.readcookie),
     # Press releases
     url(r'^press/([_a-zA-Z0-9-]+)$', views.render_press_release, name='press_release'),
